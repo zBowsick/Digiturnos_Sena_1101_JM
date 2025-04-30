@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style(2).css">
+     
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+   <title>Formulario para gestion de digiturno </title>
+</head>
+<body>
+    <div class="container">
+        <div class="header-actions" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <header>Registro tu turno</header>
+            <button onclick="window.location.href='index (1).html'" class="nextBtn" style="margin: 0;">Cerrar Sesión</button>
+        </div>
+        <form action="#">
+            <div class="form first">
+                <div class="details personal">
+
+                    <span class="title">Datos</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nombre completo</label>
+                            <input type="text" placeholder="Ingrese nombre completo" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Fecha de nacimiento</label>
+                            <input type="date" placeholder="dd/mm/aaaa" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Genero</label>
+                            <select required>
+                                <option disabled selected>Seleccione género</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                                <option>Otros</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Tipo de documento</label>
+                            <select required>
+                                <option disabled selected>Seleccione tipo de documento</option>
+                                <option>CC</option>
+                                <option>TI</option>
+                                <option>PE</option>
+                                <option>RS</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Numero de ID</label>
+                            <input type="number" placeholder="Ingrese su #ID" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Correo</label>
+                            <input type="text" placeholder="Ingrese su correo" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Numero movil</label>
+                            <input type="number" placeholder="Ingrese numero valido" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Direccion</label>
+                            <input type="text" placeholder="Ingrese su Direccion" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="details ID">
+                    <span class="title">Destalles turno</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Atencion medica</label>
+                            <select id="atencionMedica" required>
+                                <option disabled selected>Seleccione atencion medica</option>
+                                <option>Medicina general</option>
+                                <option>Cruz verde</option>
+                                <option>Odontologia</option>
+                                <option>Pediatria</option>
+                                <option>Planificacion</option>
+                                <option>Vacunacion</option>
+                                <option>Control y desarollo</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Fecha de cita</label>
+                            <input type="date" id="fechaCita" placeholder="Fecha de la cita" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Magnitud de su turno</label>
+                            <select required>
+                                <option disabled selected>Seleccione urgencia</option>
+                                <option>Normal</option>
+                                <option>No tan lejana</option>
+                                <option>Lo mas pronto</option>
+                            </select>
+                        </div>
+                
+                    </div>
+                    <button type="button" class="nextBtn" onclick="redirigirConfirmacion()">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script>
+    function redirigirConfirmacion() {
+        // Obtener los valores del formulario
+        const nombre = document.querySelector('input[placeholder="Ingrese nombre completo"]').value;
+        const atencionMedica = document.getElementById('atencionMedica').value;
+        const fechaCita = document.getElementById('fechaCita').value;
+        
+        // Generar hora aleatoria entre 8:00 AM y 5:00 PM
+        const hora = Math.floor(Math.random() * (17 - 8) + 8);
+        const minutos = Math.floor(Math.random() * 4) * 15; // intervalos de 15 minutos
+        const horaFormateada = `${hora.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+        
+        // Crear URL con parámetros
+        const params = new URLSearchParams({
+            nombre: nombre,
+            atencion: atencionMedica,
+            fecha: fechaCita,
+            hora: horaFormateada
+        });
+        
+        // Redirigir a la página de confirmación
+        window.location.href = `confirmacion.html?${params.toString()}`;
+    }
+    </script>
+</body>
+</html>
+            
