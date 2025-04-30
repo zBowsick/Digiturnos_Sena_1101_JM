@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Inicio de sesion digiturnos</title>
+</head>
+
+<body>
+    
+    <div class="container" id="container">
+        <div class="form-container iniciar-sesion">
+            <form onsubmit="return validarLogin(event)">
+                <h1>Iniciar sesión</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                </div>
+                <span>o usa tu contraseña de correo electrónico</span>
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¡Hola usuario!</h1>
+                    <p>Regístrese con sus datos personales para utilizar para obtener tu turno.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function validarLogin(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if(username === 'html' && password === '54321') {
+            window.location.href = 'admin_panel.html';
+        } else {
+            window.location.href = 'index(2).html';
+        }
+        return false;
+    }
+    </script>
+</body>
+
+</html>
+
